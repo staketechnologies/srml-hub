@@ -1,0 +1,132 @@
+<div id="readme" class="instapaper_body md" data-path="README.md">
+  <article class="markdown-body entry-content p-5" itemprop="text">
+    <div align="center"><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/6259384/56867192-8b967500-6a1d-11e9-898d-f73f4e2a387c.png"><img width="798" alt="plasm"
+          src="https://user-images.githubusercontent.com/6259384/56867192-8b967500-6a1d-11e9-898d-f73f4e2a387c.png" style="max-width:100%;"></a></div>
+    <p><a href="https://travis-ci.org/stakedtechnologies/Plasm" rel="nofollow"><img
+          src="https://camo.githubusercontent.com/440332f0160de7dd353b3fce923bee070d2da4c6/68747470733a2f2f7472617669732d63692e6f72672f7374616b6564746563686e6f6c6f676965732f506c61736d2e7376673f6272616e63683d6d6173746572" alt="Build Status"
+          data-canonical-src="https://travis-ci.org/stakedtechnologies/Plasm.svg?branch=master" style="max-width:100%;"></a></p>
+    <p>Plasm is a Substrate Runtime Module Library which allows developers to add Plasma functions to their Substrate chain easily and seamlessly. Since Plasm is an SRML, developers can also make both plasma parent chains and plasma child chains with
+      Substrate.</p>
+    <p><strong>WARNING</strong>: This is a proof-of-concept prototype. This implementation is NOT ready for production use.</p>
+    <h2><a id="user-content-table-of-contents" class="anchor" aria-hidden="true" href="#table-of-contents"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Table of Contents</h2>
+    <ul>
+      <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#introduction">Introduction</a></li>
+      <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#background">Background</a></li>
+      <li>Plasm
+        <ul>
+          <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#plasm-utxo">Plasm-UTXO</a></li>
+          <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#plasm-parent">Plasm-Parent</a></li>
+          <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#plasm-child">Plasm-Child</a></li>
+        </ul>
+      </li>
+      <li><a href="https://github.com/stakedtechnologies/Plasm/tree/master#how-to-install">How to install</a></li>
+    </ul>
+    <h2><a id="user-content-introduction" class="anchor" aria-hidden="true" href="#introduction"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Introduction</h2>
+    <p>Plasm is Staked Technologies' product that enables to import Plasma functions to your Substrate chain. Since Plasm is SRML, we can also make both Plasma parent chains and child chains. You can see the demo from <a
+        href="https://drive.google.com/file/d/1qg6SyEDM0D_hJPsun4ykkNyH-B5W8Yi6/view?usp=sharing" rel="nofollow">here</a>.</p>
+    <h2><a id="user-content-background" class="anchor" aria-hidden="true" href="#background"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Background</h2>
+    <p>Today, there are many derived Plasmas, like</p>
+    <ul>
+      <li>Plasma-MVP: Proposed by Vitalik Buterin.</li>
+      <li>Plasma-Cash: Users only need to download the histories of and watch the tokens they want to track.</li>
+      <li>Plasma-XT: Plasma-Cash derivative.</li>
+      <li>Plasma-Prime: Plasma-Cash derivative.</li>
+      <li>Plasma-Chamber: Cryptoeconomics Lab's opensource project inspired by Prime.</li>
+      <li>Plasma-Snapps: implemented ZK-S[T|N]ARKs</li>
+    </ul>
+    <p>Plasm provides a Plasma-abstract data structure which is a combination of Plasma solutions. Also, Plasm provides Rust implementations of Plasma solutions.</p>
+    <p>Substrate developers can import one of the Plasm Libraries and make their own plasma chain depending on their use case. Plasm consists of 3 (or 4) libraries, Plasm-UTXO, Plasm-Parent, and Plasm-Child. Plasm-UTXO has a UTXO like data structure
+      to manage the deposited tokens.</p>
+    <p>Plasma needs to have all transactions in order to validate and detect a malicious transaction when it is exited to the parent chain.</p>
+    <ul>
+      <li>Plasm-UTXO: implements the UTXO model which is abstracted and concreted for each Plasma solution.</li>
+      <li>Plasm-Parent: provides modules to make a parent chain.</li>
+      <li>Plasm-Child: provides modules to make a child chain.</li>
+    </ul>
+    <h2><a id="user-content-plasm-utxo" class="anchor" aria-hidden="true" href="#plasm-utxo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Plasm-UTXO</h2>
+    <p>Plasm-UTXO provides the transactions' specification which is suitable for each Plasma solution. Along with that, Plasm-UTXO can deal with UTXO-like data structures cyclopaedically. Merkle Tree is also removable.</p>
+    <h2><a id="user-content-plasm-parent" class="anchor" aria-hidden="true" href="#plasm-parent"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Plasm-Parent</h2>
+    <p>Plasm-Parent provides the parent chain’s specification. Child chain has been implemented corresponding to the parent chain's solution. Mainly, Plasm-Parent has the logic of each exit game.</p>
+    <h2><a id="user-content-plasm-child" class="anchor" aria-hidden="true" href="#plasm-child"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Plasm-Child</h2>
+    <p>Plasm-Child provides the child chain's specification. Parent chain has been implemented corresponding to the child chain's solutions.</p>
+    <p>By using these solutions together, users can make transactions between the parent chain and the child chain. The logic of "deposit/exit" has been implemented based on Plasm-UTXO.</p>
+    <h2><a id="user-content-how-to-install" class="anchor" aria-hidden="true" href="#how-to-install"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>How to install</h2>
+    <h2><a id="user-content-utxo" class="anchor" aria-hidden="true" href="#utxo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>UTXO</h2>
+    <div class="highlight highlight-source-toml">
+      <pre>[<span class="pl-en">dependencies</span>.<span class="pl-en">utxo</span>]
+<span class="pl-smi">git</span> = <span class="pl-s"><span class="pl-pds">'</span>https://github.com/stakedtechnologies/Plasm.git<span class="pl-pds">'</span></span>
+<span class="pl-smi">package</span> = <span class="pl-s"><span class="pl-pds">'</span>plasm-utxo<span class="pl-pds">'</span></span>
+<span class="pl-smi">version</span> = <span class="pl-s"><span class="pl-pds">'</span>0.1.0<span class="pl-pds">'</span></span> </pre>
+    </div>
+    <h2><a id="user-content-parent" class="anchor" aria-hidden="true" href="#parent"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Parent</h2>
+    <div class="highlight highlight-source-toml">
+      <pre>[<span class="pl-en">dependencies</span>.<span class="pl-en">parent</span>]
+<span class="pl-smi">git</span> = <span class="pl-s"><span class="pl-pds">'</span>https://github.com/stakedtechnologies/Plasm.git<span class="pl-pds">'</span></span>
+<span class="pl-smi">package</span> = <span class="pl-s"><span class="pl-pds">'</span>plasm-utxo<span class="pl-pds">'</span></span>
+<span class="pl-smi">version</span> = <span class="pl-s"><span class="pl-pds">'</span>0.1.0<span class="pl-pds">'</span></span> </pre>
+    </div>
+    <h2><a id="user-content-child" class="anchor" aria-hidden="true" href="#child"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Child</h2>
+    <div class="highlight highlight-source-toml">
+      <pre>[<span class="pl-en">dependencies</span>.<span class="pl-en">child</span>]
+<span class="pl-smi">git</span> = <span class="pl-s"><span class="pl-pds">'</span>https://github.com/stakedtechnologies/Plasm.git<span class="pl-pds">'</span></span>
+<span class="pl-smi">package</span> = <span class="pl-s"><span class="pl-pds">'</span>plasm-child<span class="pl-pds">'</span></span>
+<span class="pl-smi">version</span> = <span class="pl-s"><span class="pl-pds">'</span>0.1.0<span class="pl-pds">'</span></span> </pre>
+    </div>
+    <h2><a id="user-content-example-trait" class="anchor" aria-hidden="true" href="#example-trait"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Example Trait</h2>
+    <p>Please see <a href="https://github.com/stakedtechnologies/Plasm/blob/master/runtime/src/lib.rs">here</a>.</p>
+    <h2><a id="user-content-maintainers" class="anchor" aria-hidden="true" href="#maintainers"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+          </path>
+        </svg></a>Maintainers</h2>
+    <ul>
+      <li><a href="https://twitter.com/public_sate" rel="nofollow">@public_sate</a></li>
+    </ul>
+    <hr>
+    <p>Plasm is licensed under the Apache License, Version2.0 by Staked Technologies Inc.</p>
+  </article>
+</div>

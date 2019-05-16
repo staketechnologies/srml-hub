@@ -23,11 +23,34 @@
   color: #61dafb;
 }
 
+.card {
+  box-shadow: 1px 1px 2px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.fly {
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+
+.fly:hover {
+  z-index: 999;
+  -webkit-transform: scale(1.07);
+  -ms-transform: scale(1.07);
+  transform: scale(1.07);
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
