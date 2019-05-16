@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
 
 class RenderModelPage extends React.Component {
@@ -13,7 +12,6 @@ class RenderModelPage extends React.Component {
   readme(props) {
     var myUrl = ("https://api.github.com/repos/" + props.model.user + "/" + props.model.repo + "/readme");
     let result = "";
-    //return {__html:"<li>Plasm<ul> <li><a href=\"https://github.com/stakedtechnologies/Plasm/tree/master#plasm-utxo\">Plasm-UTXO</a></li><li><a href=\"https://github.com/stakedtechnologies/Plasm/tree/master#plasm-parent\">Plasm-Parent</a></li><li><a href=\"https://github.com/stakedtechnologies/Plasm/tree/master#plasm-child\">Plasm-Child</a></li></ul></li>"}
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/vnd.github.VERSION.html");
 
