@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { github } from 'react-syntax-highlighter/dist/styles/hljs';
+import { atelierForestLight as markdownstyle } from 'react-syntax-highlighter/dist/styles/hljs';
 
 class CodeBlock extends PureComponent {
   static propTypes = {
@@ -16,7 +16,7 @@ class CodeBlock extends PureComponent {
   render() {
     const { language, value } = this.props;
     return (
-      <SyntaxHighlighter language={language} style={github}>
+      <SyntaxHighlighter language={language} style={markdownstyle}>
         {value}
       </SyntaxHighlighter>
     );

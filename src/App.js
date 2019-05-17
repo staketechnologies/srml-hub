@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
+import {Col, Row, Container, Modal, Button,Jumbotron} from 'react-bootstrap'
 import './App.css';
 import RenderModelPage from './RenderModelPage.js'
 import models from './models.js'
@@ -28,7 +28,7 @@ class App extends React.Component {
   afterOpenModal() {}
 
   OneCard(props) {
-    return (<a className="rounded p-2 fly card" onClick={this.openModal.bind(this, props.model)}>
+    return (<a className="rounded p-2 fly card" onClick={this.openModal.bind(this, props.model)} style={{background : "#EEE"}}>
       <div className="m-1">
         <h2>{props.model.name}</h2>
       </div>
@@ -44,8 +44,11 @@ class App extends React.Component {
 
   render() {
 
-    return (<div className="App">
+    return (<div className="App" >
       <Container fluid={false}>
+        <Jumbotron style={{color: "white",background : "#243"}}>
+          <h1>Substrate Hub</h1>
+        </Jumbotron>
         <Row style={rowEqHeight}>
           {this.state.cards}
         </Row>
