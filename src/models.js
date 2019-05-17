@@ -1,5 +1,3 @@
-import React from 'react';
-
 var models = [
   {
     name: "Plasm",

@@ -1,8 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import remark from 'remark'
-import remarkReact from 'remark-react'
-import Highlight from 'react-highlight'
+import ReactMarkdown from 'react-markdown'
+import CodeBlock from "./CodeBlock";
 import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
 
 class RenderModelPage extends React.Component {
@@ -10,15 +8,9 @@ class RenderModelPage extends React.Component {
     super(props);
     this.state = {
       model: props.model,
-      readmetext: "",
-      text:""
+      readmetext: ""
     }
-    this.onChange=this.onChange.bind(this);
   }
-  onChange(e) {
-    this.setState({ text: e.target.value })
-  }
-
   componentDidMount() {
     var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
     fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
@@ -34,21 +26,12 @@ class RenderModelPage extends React.Component {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div id="preview">
-          <div>{
-            remark()
-              .use(remarkReact,{
-                sanitize:false,
-                remarkReactComponents: {
-                  code: Highlight
-                },})
-              .processSync(this.state.readmetext).contents
-          }</div>
-        </div>
-        {/*remark()
-          .use(remark2react,
-            {sanitize: false,})
-          .processSync(this.state.readmetext).contents*/}
+        <ReactMarkdown
+          source={this.state.readmetext}
+          renderers={{
+            code: CodeBlock
+          }}
+          escapeHtml={false}/>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
     </Container>);
