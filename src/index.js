@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import hljs from 'highlight.js/lib/highlight';
+import 'highlight.js/styles/github.css';
 require('../node_modules/bootstrap/dist/css/bootstrap.css');
 
 

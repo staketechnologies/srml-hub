@@ -1,4 +1,8 @@
-import React from 'react';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import remark from 'remark'
+import remarkReact from 'remark-react'
+import Highlight from 'react-highlight'
 import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
 
 class RenderModelPage extends React.Component {
@@ -6,41 +10,48 @@ class RenderModelPage extends React.Component {
     super(props);
     this.state = {
       model: props.model,
+      readmetext: "",
+      text:""
     }
+    this.onChange=this.onChange.bind(this);
+  }
+  onChange(e) {
+    this.setState({ text: e.target.value })
   }
 
-  readme(props) {
-    var apiUrl = ("https://api.github.com/repos/" + props.model.user + "/" + props.model.repo + "/readme");
-    var myUrl = ("https://github.com/" + props.model.user + "/" + props.model.repo + "/blob/master/README.md");
-
-    var myHeaders = new Headers();
-    var apiHeaders = new Headers();
-    apiHeaders.append("Accept", "application/vnd.github.VERSION.html");
-    myHeaders.append("Accept", "application/vnd.github.VERSION.html");
-
-
-    fetch(apiUrl, {headers: myHeaders})
-    .then(response => response.text())
-    .then(mytext => {
-      document.getElementById("result").innerHTML = mytext;
-    }).catch(() => {
+  componentDidMount() {
+    var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
+    fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
       console.log("fetch error")
     });
   }
+
   render() {
-    console.log("render");
-    this.readme({model: this.state.model})
-    return (<div>
+    return (<Container>
       <Modal.Header closeButton="closeButton">
         <Modal.Title id="contained-modal-title-vcenter">
           {this.state.model.name}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div id="result"></div>
+        <div id="preview">
+          <div>{
+            remark()
+              .use(remarkReact,{
+                sanitize:false,
+                remarkReactComponents: {
+                  code: Highlight
+                },})
+              .processSync(this.state.readmetext).contents
+          }</div>
+        </div>
+        {/*remark()
+          .use(remark2react,
+            {sanitize: false,})
+          .processSync(this.state.readmetext).contents*/}
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
-    </div>);
+    </Container>);
   }
 }
 
