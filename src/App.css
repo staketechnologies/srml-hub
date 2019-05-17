@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #B9C6C0;
 }
 
 .App-logo {
@@ -38,9 +39,9 @@
 
 .fly:hover {
   z-index: 999;
-  -webkit-transform: scale(1.07);
-  -ms-transform: scale(1.07);
-  transform: scale(1.07);
+  -webkit-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
   -webkit-transition: all 0.15s ease;
   -o-transition: all 0.15s ease;
   transition: all 0.15s ease;

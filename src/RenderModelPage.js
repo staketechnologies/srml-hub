@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import CodeBlock from "./CodeBlock";
 import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
 
 class RenderModelPage extends React.Component {
@@ -6,37 +8,38 @@ class RenderModelPage extends React.Component {
     super(props);
     this.state = {
       model: props.model,
+      readmetext: ""
     }
   }
-
-  readme(props) {
-    var myUrl = ("https://api.github.com/repos/" + props.model.user + "/" + props.model.repo + "/readme");
-    let result = "";
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/vnd.github.VERSION.html");
-
-    fetch(myUrl, {headers: myHeaders}).then(response => response.text()).then(mytext => {
-      console.log(myUrl);
-      document.getElementById("result").innerHTML = mytext;
-    }).catch(() => {
+  componentDidMount() {
+    var myUrl
+    if(this.state.model.hasOwnProperty("readme")){
+      myUrl = this.state.model.readme;
+    }else {
+      var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
+    }
+    fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
       console.log("fetch error")
     });
-    return result;
   }
+
   render() {
-    console.log("render");
-    this.readme({model: this.state.model})
-    return (<div>
+    return (<Container>
       <Modal.Header closeButton="closeButton">
         <Modal.Title id="contained-modal-title-vcenter">
           {this.state.model.name}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div id="result"></div>
+        <ReactMarkdown
+          source={this.state.readmetext}
+          renderers={{
+            code: CodeBlock
+          }}
+          escapeHtml={false}/>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
-    </div>);
+    </Container>);
   }
 }
 
