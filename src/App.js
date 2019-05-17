@@ -3,44 +3,7 @@ import logo from './logo.svg';
 import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
 import './App.css';
 import RenderModelPage from './RenderModelPage.js'
-
-var models = [
-  {
-    name: "Plasm",
-    user: "stakedtechnologies",
-    repo: "Plasm",
-    descripstion: "Allows to add Plasma functions to their Substrate chain easily and seamlessly. Developers can also make both plasma parent chains and plasma child chains with Substrate."
-  }, {
-    name: "Substrate POA",
-    user: "gautamdhameja",
-    repo: "substrate-poa",
-    descripstion: "Allows addition of new validators in a pure PoA(Proof of Authority) fashion. No tokens or stake needed, just the authorities have to agree."
-  },
-  {
-    name: "Zerochain",
-    user: "LayerXcom",
-    repo: "zero-chain",
-    descripstion: "Zerochain is a privacy-preserving blockchain on substrate. It is designed to get efficient zero-knowledge proving, reduce the on-chain storage cost and bring the flexibility for developing applications."
-  },
-  {
-    name: "Robonomics on Substrate",
-    user: "airalab",
-    repo: "substrate-node-robonomics",
-    descripstion: "AIRA (Autonomous Intelligent Robot Agent) project implements the standard of economic interaction between human-robot and robot-robot via liability smart contract. "
-  },
-  {
-    name: "adex-protocol-substrate",
-    user: "AdExNetwork",
-    repo: "adex-protocol-substrate",
-    descripstion: "The AdEx Protocol implemented on top of Substrate. Bootstrapped from substrate-node-template."
-  },
-  {
-    name: "edgeware-node",
-    user: "hicommonwealth",
-    repo: "edgeware-node",
-    descripstion: "A Parity Substrate node implementing Edgeware."
-  },
-]
+import models from './models.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -87,10 +50,10 @@ class App extends React.Component {
         <Row style={rowEqHeight}>
           {cards}
         </Row>
+        <Modal show={this.state.modalIsOpen} onHide={this.closeModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered="centered">
+          <RenderModelPage model={this.state.model}/>
+        </Modal>
       </Container>
-      <Modal show={this.state.modalIsOpen} onHide={this.closeModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered="centered">
-        <RenderModelPage model={this.state.model} />
-      </Modal>
     </div>);
   }
 }
