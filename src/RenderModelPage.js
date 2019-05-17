@@ -13,20 +13,19 @@ class RenderModelPage extends React.Component {
     var apiUrl = ("https://api.github.com/repos/" + props.model.user + "/" + props.model.repo + "/readme");
     var myUrl = ("https://github.com/" + props.model.user + "/" + props.model.repo + "/blob/master/README.md");
 
-    let result = "";
     var myHeaders = new Headers();
     var apiHeaders = new Headers();
-    myHeaders.append("Origin", "https://substrate-hub.herokuapp.com");
     apiHeaders.append("Accept", "application/vnd.github.VERSION.html");
+    myHeaders.append("Accept", "application/vnd.github.VERSION.html");
 
 
-    fetch(myUrl, {mode:'cors',headers: myHeaders}).then(response => response.text()).then(mytext => {
-      console.log(myUrl);
+    fetch(apiUrl, {headers: myHeaders})
+    .then(response => response.text())
+    .then(mytext => {
       document.getElementById("result").innerHTML = mytext;
     }).catch(() => {
       console.log("fetch error")
     });
-    return result;
   }
   render() {
     console.log("render");
