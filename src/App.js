@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import {
+  Collapse,
   Col,
   Row,
   Container,
@@ -27,19 +28,16 @@ class App extends React.Component {
     this.onChangeForm=this.onChangeForm.bind(this);
   }
 
-  filterCards(searchtext) {
+  makeCards(searchtext) {
     console.log("filter "+searchtext);
     var nextcards = models.map((m) => {
       var lowerName=m.name.toLowerCase();
       var isDisplay = (lowerName.indexOf(searchtext) > -1);
-      if(isDisplay){
-        return (<Col key={m.name} sm={6} lg={4} xl={3} className="d-flex align-items-stretch">
+      if(isDisplay){return (<Col key={m.name} sm={6} lg={4} xl={3} className={"d-flex align-items-stretch "+ (isDisplay?"":"d-none")}>
           {this.OneCard({model: m})}
-        </Col>);}
-      else{
-        return false;
+        </Col>);}else{return false;}
       }
-    });
+    );
     return nextcards;
   }
 
@@ -47,8 +45,8 @@ class App extends React.Component {
     var target=event.target;
     var value=target.value;
     console.log("onchange to "+value);
-    this.setState({searchtext:value})
-    this.setState({searchtext:value,cards:this.filterCards(value.toLowerCase())});
+    var cards=this.makeCards(value.toLowerCase());
+    this.setState({searchtext:value,cards});
   }
   openModal(model) {
     this.setState({model: model, modalIsOpen: true});
@@ -59,7 +57,8 @@ class App extends React.Component {
   afterOpenModal() {}
 
   componentWillMount() {
-    this.setState({cards:this.filterCards(this.state.searchtext)});
+    var cards=this.makeCards(this.state.searchtext);
+    this.setState({cards:cards});
   }
   OneCard(props) {
     return (<a className="rounded p-2 fly card" onClick={this.openModal.bind(this, props.model)} style={{

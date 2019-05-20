@@ -20,9 +20,9 @@ class SearchForm extends React.Component {
         <Form.Group as={Col} md="12" controlId="validationFormikUsername">
           <InputGroup>
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend"><i class="far fa-eye"></i></InputGroup.Text>
+              <InputGroup.Text id="inputGroupPrepend"><i className="fas fa-eye"></i></InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control placeholder="Search from here" aria-describedby="inputGroupPrepend"
+            <Form.Control　autoComplete="off" placeholder="Search from here" aria-describedby="inputGroupPrepend"
               name="searchtext" value={this.props.value} onChange={this.props.onChange} isInvalid={false}/>
           </InputGroup>
         </Form.Group>
