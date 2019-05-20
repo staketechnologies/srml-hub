@@ -19,7 +19,7 @@ class RenderModelPage extends React.Component {
       var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
     }
     fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
-      console.log("fetch error")
+      console.log("fetch error");
     });
   }
 
