@@ -1,13 +1,8 @@
 import React from 'react';
 import {
+  Col,
   Form,
   InputGroup,
-  Col,
-  Row,
-  Container,
-  Modal,
-  Button,
-  Jumbotron
 } from 'react-bootstrap'
 
 class SearchForm extends React.Component {
