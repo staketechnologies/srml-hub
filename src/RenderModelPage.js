@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from "./CodeBlock";
-import {Col, Row, Container, Modal, Button} from 'react-bootstrap'
+import {Container, Modal, Button} from 'react-bootstrap'
+import PropTypes from 'prop-types';
 
 class RenderModelPage extends React.Component {
   constructor(props) {
@@ -13,9 +14,9 @@ class RenderModelPage extends React.Component {
   }
   componentDidMount() {
     var myUrl
-    if(this.state.model.hasOwnProperty("readme")){
+    if (this.state.model.hasOwnProperty("readme")) {
       myUrl = this.state.model.readme;
-    }else {
+    } else {
       var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
     }
     fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
@@ -31,16 +32,17 @@ class RenderModelPage extends React.Component {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ReactMarkdown
-          source={this.state.readmetext}
-          renderers={{
+        <ReactMarkdown source={this.state.readmetext} renderers={{
             code: CodeBlock
-          }}
-          escapeHtml={false}/>
+          }} escapeHtml={false}/>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
     </Container>);
   }
 }
+
+RenderModelPage.propTypes = {
+  model: PropTypes.object.isRequired,
+};
 
 export default RenderModelPage;
