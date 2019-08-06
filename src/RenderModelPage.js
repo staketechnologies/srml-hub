@@ -14,12 +14,17 @@ class RenderModelPage extends React.Component {
   }
   componentDidMount() {
     var myUrl
+    var urlPrefix = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo);
     if (this.state.model.hasOwnProperty("readme")) {
       myUrl = this.state.model.readme;
     } else {
-      var myUrl = ("https://raw.githubusercontent.com/" + this.state.model.user + "/" + this.state.model.repo + "/master/README.md");
+      myUrl = (urlPrefix + "/master/README.md");
     }
-    fetch(myUrl, {mode: 'cors'}).then(response => response.text()).then(mytext => this.setState({readmetext: mytext})).catch(() => {
+    fetch(myUrl, {mode: 'cors'})
+      .then(response => response.text())
+      .then(mytext => mytext.replace(/\.\/(.+\.(jpg|png|gif))/g, urlPrefix + "/master/$1"))
+      .then(mytext => { console.log(mytext); this.setState({readmetext: mytext}); })
+      .catch(() => {
       console.log("fetch error");
     });
   }
@@ -32,6 +37,7 @@ class RenderModelPage extends React.Component {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        console.log(this.state.readmetext);
         <ReactMarkdown source={this.state.readmetext} renderers={{
             code: CodeBlock
           }} escapeHtml={false}/>
