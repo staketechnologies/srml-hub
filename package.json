@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "4.3.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
@@ -10,6 +11,7 @@
     "react-gist": "^1.2.1",
     "react-highlight": "^0.12.0",
     "react-markdown": "^4.0.8",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-syntax-highlighter": "^10.2.1",
     "remark": "^10.0.1",
@@ -35,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "env": {
+    "jquery": true
   }
 }
