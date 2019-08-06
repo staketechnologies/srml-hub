@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container, Modal, Button, InputGroup, FormControl} from 'react-bootstrap'
-import request from 'superagent';
+import axios from 'axios';
  
 
 class Suggest extends React.Component {
@@ -40,15 +40,9 @@ class Suggest extends React.Component {
       var data = new FormData;
       data.append("entry.903783812", this.state.description);
       data.append("entry.660849746", this.state.url);
-      request
-        .post("https://docs.google.com/forms/u/1/d/e/1FAIpQLSdnFIIIdld5KUGFvQxHWtDzP1y7DsP3qCcD-flYdtwpUGharQ/formResponse")
-        .send(data)
-        .set('Content-Type', false)
-        .set('Data-Type', "xml")
-        .withCredentials()
-        .then(res => {
-            alert(res);
-        })
+      axios
+        .post("https://cors-anywhere.herokuapp.com/https://docs.google.com/forms/u/1/d/e/1FAIpQLSdnFIIIdld5KUGFvQxHWtDzP1y7DsP3qCcD-flYdtwpUGharQ/formResponse", data)
+        .then(_ => alert('Success send!'));
       console.log(this.state);
   }
 
