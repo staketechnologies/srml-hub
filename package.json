@@ -14,7 +14,8 @@
     "react-scripts": "3.0.1",
     "react-syntax-highlighter": "^10.2.1",
     "remark": "^10.0.1",
-    "remark-react": "^5.0.1"
+    "remark-react": "^5.0.1",
+    "superagent": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "env": {
+    "jquery": true
   }
 }
