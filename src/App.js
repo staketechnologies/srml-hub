@@ -92,7 +92,6 @@ class App extends React.Component {
     // console.log("render start");
     var ShowCards = this.ShowCards.bind(this);
     return (<div className="App">
-      <Header />
       <Container fluid={false} style={{
           paddingTop: '10px'
         }}>
