@@ -4,6 +4,7 @@ import {Col, Row, Container, Modal, Jumbotron} from 'react-bootstrap'
 import './App.css';
 import RenderModelPage from './RenderModelPage.js'
 import SearchForm from './SearchForm.jsx'
+import Header from './Header.jsx'
 
 import GitHubButton from './GitHubButton.jsx'
 
@@ -71,7 +72,7 @@ class App extends React.Component {
       repo: props.model.repo
     });
     return (<div className="rounded p-2 fly card col-sm-12" onClick={this.openModal.bind(this, props.model)} style={{
-        background: "#EEE"
+        background: "#FFF"
       }}>
       <div className="m-1">
         <h2>{props.model.name}</h2>
@@ -91,15 +92,17 @@ class App extends React.Component {
     // console.log("render start");
     var ShowCards = this.ShowCards.bind(this);
     return (<div className="App">
+      <Header />
       <Container fluid={false} style={{
           paddingTop: '10px'
         }}>
         <Jumbotron style={{
             marginBottom: '10px',
             color: 'white',
-            background: '#243'
+            background: '#123'
           }}>
           <h1>Substrate Hub</h1>
+          <p>Discover open source substrate runtime module and subtrate chain code</p>
         </Jumbotron>
         <SearchForm value={this.state.searchtext} onChange={this.onChangeForm.bind(this)}/>
         <Row style={{}}>
