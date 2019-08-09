@@ -98,7 +98,7 @@ class App extends React.Component {
         <Jumbotron style={{
             marginBottom: '10px',
             color: 'white',
-            background: '#123'
+            background: '#226'
           }}>
           <h1>Substrate Hub</h1>
           <p>Let’s find Substrate Runtime Module Library based on your needs.</p>
@@ -140,7 +140,7 @@ class OneCard extends React.Component {
   render() {
 
     return (<div className="rounded p-2 fly card col-sm-12" onClick={this.state.onClick} style={{
-        background: "#EEE"
+        background: "#EEF"
       }}>
       <div className="m-1">
         <h2>{this.state.model.name}</h2>

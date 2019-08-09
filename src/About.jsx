@@ -15,7 +15,7 @@ class About extends React.Component {
                 <Jumbotron style={{
                     marginBottom: '10px',
                     color: 'white',
-                    background: '#123'
+                    background: '#226'
                 }}>
                 <h1>About</h1>
                 </Jumbotron>
