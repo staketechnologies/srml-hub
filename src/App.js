@@ -101,7 +101,7 @@ class App extends React.Component {
             background: '#123'
           }}>
           <h1>Substrate Hub</h1>
-          <p>Discover open source substrate runtime module and subtrate chain code</p>
+          <p>Let’s find Substrate Runtime Module Library based on your needs.</p>
         </Jumbotron>
         <SearchForm value={this.state.searchtext} onChange={this.onChangeForm.bind(this)}/>
         <Row style={{}}>
