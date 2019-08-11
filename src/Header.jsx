@@ -33,7 +33,7 @@ class Header extends React.Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link onClick={this.openModal.bind(this)}>Suggest a SRML</Nav.Link>
+                    <Nav.Link onClick={this.openModal.bind(this)}>Suggest an SRML</Nav.Link>
                 </Nav>
                 <Nav>
                     <Nav.Link href="https://stake.co.jp">Stake Technologies</Nav.Link>

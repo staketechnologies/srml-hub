@@ -50,7 +50,7 @@ class Suggest extends React.Component {
     return (<Container>
         <Modal.Header closeButton="closeButton">
             <Modal.Title id="contained-modal-title-vcenter">
-                <h1>Suggest a SRML</h1><p>Got a SRML that you think we should include? Let us know!</p>
+                <h1>Suggest an SRML</h1><p>Got an SRML that you think we should include? Let us know!</p>
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
