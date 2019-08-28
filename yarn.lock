@@ -1758,6 +1758,13 @@ asap@~2.0.3, asap@~2.0.6:
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
+asciidoctor.js@1.5.7:
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/asciidoctor.js/-/asciidoctor.js-1.5.7.tgz#e52980ee3a4f108af2bb4cded0f9c1fae33f023b"
+  integrity sha512-6AyUGa1TbRgtgeA4gH1MteEl650U2rPEaUHZVu1uphC0mfkr1H1GbHfhCL4fqaVmXVwgBePSumWPYM8KPuJhgg==
+  dependencies:
+    opal-runtime "1.0.10"
+
 asn1.js@^4.0.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
@@ -4385,6 +4392,17 @@ glob-to-regexp@^0.3.0:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz#8c5a1494d2066c570cc3bfe4496175acc4d502ab"
   integrity sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs=
 
+glob@6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
+  integrity sha1-DwiGD2oVUSey+t1PnOJLGqtuTSI=
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3:
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
@@ -6475,7 +6493,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
-minimatch@3.0.4, minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@3.0.4, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
@@ -6938,6 +6956,14 @@ onetime@^2.0.0:
   integrity sha1-BnQoIw/WdEOyeUsiu6UotoZ5YtQ=
   dependencies:
     mimic-fn "^1.0.0"
+
+opal-runtime@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/opal-runtime/-/opal-runtime-1.0.10.tgz#0c693c723f251dad39972903a9edc4f55d8b937f"
+  integrity sha512-1BRcHKR7aARLxo1Q4/vkLAO3OspRMTtVPYULJHlMZvXreNvkNAw9BFCx0xYJJqhksMDwClg42eDZCTmKxRCGHg==
+  dependencies:
+    glob "6.0.4"
+    xmlhttprequest "1.8.0"
 
 opn@5.4.0:
   version "5.4.0"
@@ -8264,6 +8290,14 @@ react-app-polyfill@^1.0.1:
     raf "3.4.1"
     regenerator-runtime "0.13.2"
     whatwg-fetch "3.0.0"
+
+react-asciidoc@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-asciidoc/-/react-asciidoc-0.1.0.tgz#c05d15e45a58166a94c9a0e8e85cf2b7b3194ed9"
+  integrity sha512-BqRv8vWSpzWHQWvTycj4O/1iPs77ntUCBGOp/M5H/VGeQe/CM24KsulH98r/+s/rQuDvXsyWZee5UCbEiXzkbQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    asciidoctor.js "1.5.7"
 
 react-bootstrap@^1.0.0-beta.8:
   version "1.0.0-beta.8"
@@ -10798,6 +10832,11 @@ xmlchars@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-1.3.1.tgz#1dda035f833dbb4f86a0c28eaa6ca769214793cf"
   integrity sha512-tGkGJkN8XqCod7OT+EvGYK5Z4SfDQGD30zAa58OcnAa0RRWgzUEK72tkXhsX1FZd+rgnhRxFtmO+ihkp8LHSkw==
+
+xmlhttprequest@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
+  integrity sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw=
 
 xregexp@4.0.0:
   version "4.0.0"
