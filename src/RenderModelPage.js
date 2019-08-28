@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import Asciidoc from 'react-asciidoc';
 import CodeBlock from "./CodeBlock";
 import {Container, Modal, Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
@@ -9,7 +10,8 @@ class RenderModelPage extends React.Component {
     super(props);
     this.state = {
       model: props.model,
-      readmetext: ""
+      readmetext: "",
+      readmetype: ""
     }
   }
   componentDidMount() {
@@ -21,15 +23,35 @@ class RenderModelPage extends React.Component {
       myUrl = (urlPrefix + "/master/README.md");
     }
     fetch(myUrl, {mode: 'cors'})
-      .then(response => response.text())
-      .then(mytext => mytext.replace(/\.\/(.+\.(jpg|png|gif))/g, urlPrefix + "/master/$1"))
-      .then(mytext => this.setState({readmetext: mytext}))
-      .catch(() => {
-      console.log("fetch error");
+      .then(response => {
+        if( response.status == "404" ) {
+          throw response.err;
+        }
+        return response.text()
+      })
+      .then(mytext => mytext.replace(/\.\/(.+\.(jpg|png|gif|svg))/g, urlPrefix + "/master/$1"))
+      .then(mytext => this.setState({readmetext: mytext, readmetype: 'md'}))
+      .catch((err) => {
+        myUrl = (urlPrefix + "/master/README.adoc");
+        fetch(myUrl, {mode: 'cors'})
+          .then(response => response.text())
+          .then(mytext => mytext.replace(/\.\/(.+\.(jpg|png|gif|svg))/g, urlPrefix + "/master/$1"))
+          .then(mytext => this.setState({readmetext: mytext, readmetype: 'adoc'}))
+          .catch((err) => {
+          console.log("fetch error", err);
+        });
     });
   }
 
   render() {
+    var content = ""
+    if( this.state.readmetype == 'md' ) {
+      content = <ReactMarkdown source={this.state.readmetext} renderers={{
+        code: CodeBlock
+      }} escapeHtml={false}/>
+    } else {
+      content = <Asciidoc>{this.state.readmetext}</Asciidoc>
+    }
     return (<Container>
       <Modal.Header closeButton="closeButton">
         <Modal.Title id="contained-modal-title-vcenter">
